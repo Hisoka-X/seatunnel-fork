@@ -39,7 +39,6 @@ public class ConfigDataSerializerHook implements DataSerializerHook {
     public int getFactoryId() {
         return FACTORY_ID;
     }
-
     @Override
     public DataSerializableFactory createFactory() {
         return new Factory();
