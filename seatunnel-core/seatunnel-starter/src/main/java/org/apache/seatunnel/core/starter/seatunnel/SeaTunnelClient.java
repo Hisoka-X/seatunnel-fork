@@ -25,6 +25,7 @@ import org.apache.seatunnel.core.starter.utils.CommandLineUtils;
 
 public class SeaTunnelClient {
     public static void main(String[] args) throws CommandException {
+
         ClientCommandArgs clientCommandArgs =
                 CommandLineUtils.parse(
                         args,
