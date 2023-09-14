@@ -13,6 +13,7 @@ hs_err_pid*
 target/
 
 # Log file
+
 *.log
 /logs
 logs.zip
