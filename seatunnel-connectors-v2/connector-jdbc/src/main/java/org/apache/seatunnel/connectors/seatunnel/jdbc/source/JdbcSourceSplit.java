@@ -27,6 +27,7 @@ import lombok.Data;
 public class JdbcSourceSplit implements SourceSplit {
 
     Object[] parameterValues;
+
     Integer splitId;
 
     @Override
