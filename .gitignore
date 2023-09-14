@@ -19,6 +19,7 @@ logs.zip
 
 # Intellij Idea files
 .idea/
+
 *.iml
 .idea/*
 
