@@ -41,7 +41,7 @@ public interface JdbcOptions {
                     .stringType()
                     .noDefaultValue()
                     .withDescription(
-                            "The compatible mode of database, required when the database supports multiple compatible modes. For example, when using OceanBase database, you need to set it to 'mysql' or 'oracle'.");
+                            "The compatible mode of database, required2 when the database supports multiple compatible modes. For example, when using OceanBase database, you need to set it to 'mysql' or 'oracle'.");
 
     Option<Integer> MAX_RETRIES =
             Options.key("max_retries").intType().defaultValue(0).withDescription("max_retired");
