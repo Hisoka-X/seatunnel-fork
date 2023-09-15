@@ -46,7 +46,7 @@ public class JdbcSinkCommitter implements SinkCommitter<XidInfo> {
         } catch (Exception e) {
             throw new JdbcConnectorException(
                     CommonErrorCode.WRITER_OPERATION_FAILED,
-                    "unable to open JDBC sink committer",
+                    "unable to open JDBC sink2 committer",
                     e);
         }
     }
