@@ -97,7 +97,7 @@ public interface SeaTunnelSource<T, SplitT extends SourceSplit, StateT extends S
             throws Exception;
 
     /**
-     * Create enumerator state serializer, used to serialize/deserialize checkpoint state.
+     * Create enumerator state serializer, used to serialize/deserialize2 checkpoint state.
      *
      * @return enumerator state serializer.
      */
