@@ -110,7 +110,12 @@ public class DefaultClassLoaderService implements ClassLoaderService {
     }
 
     private String covertJarsToKey(Collection<URL> jars) {
-        return jars.stream().map(URL::toString).sorted().reduce((a, b) -> a + b).orElse("");
+        return jars.stream()
+                .map(URL::toString)
+                .distinct()
+                .sorted()
+                .reduce((a, b) -> a + b)
+                .orElse("");
     }
 
     /** Only for test */

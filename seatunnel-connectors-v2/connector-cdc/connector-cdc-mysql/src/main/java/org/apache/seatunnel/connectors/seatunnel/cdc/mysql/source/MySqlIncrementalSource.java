@@ -43,6 +43,7 @@ import org.apache.seatunnel.connectors.seatunnel.jdbc.catalog.JdbcCatalogOptions
 
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 public class MySqlIncrementalSource<T> extends IncrementalSource<T, JdbcSourceConfig>
         implements SupportParallelism {
@@ -116,5 +117,10 @@ public class MySqlIncrementalSource<T> extends IncrementalSource<T, JdbcSourceCo
         return new BinlogOffsetFactory(
                 (MySqlSourceConfigFactory) configFactory,
                 (JdbcDataSourceDialect) dataSourceDialect);
+    }
+
+    @Override
+    public Optional<String> driverName() {
+        return Optional.of("com.mysql.cj.jdbc.Driver");
     }
 }

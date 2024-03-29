@@ -34,7 +34,7 @@ public class SeaTunnelChildFirstClassLoader extends SeaTunnelBaseClassLoader {
                 "javax.xml",
                 "org.xml",
                 "org.w3c",
-                "org.apache.hadoop",
+                //                "org.apache.hadoop",
                 "scala.",
                 "org.apache.seatunnel.",
                 "javax.annotation.",

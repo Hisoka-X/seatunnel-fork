@@ -49,6 +49,7 @@ import io.debezium.relational.history.TableChanges;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -116,6 +117,11 @@ public class PostgresIncrementalSource<T> extends IncrementalSource<T, JdbcSourc
     public OffsetFactory createOffsetFactory(ReadonlyConfig config) {
         return new LsnOffsetFactory(
                 (PostgresSourceConfigFactory) configFactory, (PostgresDialect) dataSourceDialect);
+    }
+
+    @Override
+    public Optional<String> driverName() {
+        return Optional.of("org.postgresql.Driver");
     }
 
     private Map<TableId, Struct> tableChanges() {

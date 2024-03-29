@@ -42,6 +42,14 @@
                 <include>plugins/**</include>
             </includes>
         </fileSet>
+        <!-- ============ Connector Dependency Directory ============  -->
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>connector-*</include>
+            </includes>
+            <outputDirectory>/plugins</outputDirectory>
+        </fileSet>
         <!-- ============ Install Plugin Bin ============  -->
         <fileSet>
             <directory>../bin</directory>
@@ -206,6 +214,20 @@
             </includes>
             <outputFileNameMapping>${artifact.file.name}</outputFileNameMapping>
             <outputDirectory>/lib</outputDirectory>
+            <scope>provided</scope>
+        </dependencySet>
+
+        <!-- =================== Hive2 Connector Dependency ===================  -->
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+            <unpack>false</unpack>
+            <includes>
+                <include>org.apache.hadoop:hadoop-client:jar:${hadoop2.version}</include>
+                <include>org.apache.hive:hive-exec:jar:${hive.exec.version}</include>
+            </includes>
+            <outputFileNameMapping>${artifact.file.name}</outputFileNameMapping>
+            <outputDirectory>/plugins/connector-hive2</outputDirectory>
             <scope>provided</scope>
         </dependencySet>
     </dependencySets>

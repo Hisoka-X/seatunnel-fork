@@ -129,4 +129,9 @@ public class MongodbIncrementalSource<T> extends IncrementalSource<T, MongodbSou
     public OffsetFactory createOffsetFactory(ReadonlyConfig config) {
         return new ChangeStreamOffsetFactory();
     }
+
+    @Override
+    public Optional<String> driverName() {
+        return Optional.empty();
+    }
 }

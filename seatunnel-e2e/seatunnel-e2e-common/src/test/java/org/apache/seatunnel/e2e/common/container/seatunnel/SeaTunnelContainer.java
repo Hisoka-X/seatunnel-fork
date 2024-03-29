@@ -317,7 +317,9 @@ public class SeaTunnelContainer extends AbstractTestContainer {
                 || threadName.startsWith("MaintenanceTimer")
                 || threadName.startsWith("cluster-")
                 // Iceberg
-                || threadName.startsWith("iceberg");
+                || threadName.startsWith("iceberg")
+                // mysql driver
+                || threadName.startsWith("mysql-cj-abandoned-connection-cleanup");
     }
 
     @Override

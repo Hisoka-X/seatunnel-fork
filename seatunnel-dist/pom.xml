@@ -38,6 +38,10 @@
         <finalName>apache-seatunnel-${project.version}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
@@ -253,7 +257,13 @@
                 </dependency>
                 <dependency>
                     <groupId>org.apache.seatunnel</groupId>
-                    <artifactId>connector-hive</artifactId>
+                    <artifactId>connector-hive2</artifactId>
+                    <version>${project.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.seatunnel</groupId>
+                    <artifactId>connector-hive3</artifactId>
                     <version>${project.version}</version>
                     <scope>provided</scope>
                 </dependency>
@@ -685,6 +695,24 @@
                     <version>${hadoop-aliyun.version}</version>
                     <scope>provided</scope>
                 </dependency>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-client</artifactId>
+                    <version>${hadoop2.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hive</groupId>
+                    <artifactId>hive-exec</artifactId>
+                    <version>${hive.exec.version}</version>
+                    <scope>provided</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.pentaho</groupId>
+                            <artifactId>pentaho-aggdesigner-algorithm</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
                 <!-- hadoop jar end -->
             </dependencies>
             <repositories>
@@ -773,6 +801,10 @@
             <build>
                 <finalName>apache-seatunnel-${project.version}</finalName>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                    </plugin>
                     <plugin>
                         <artifactId>maven-assembly-plugin</artifactId>
                         <executions>

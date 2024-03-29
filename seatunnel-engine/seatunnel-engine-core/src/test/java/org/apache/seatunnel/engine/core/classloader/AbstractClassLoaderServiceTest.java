@@ -99,6 +99,29 @@ public abstract class AbstractClassLoaderServiceTest {
     }
 
     @Test
+    void testJarDuplicated() throws MalformedURLException {
+        ClassLoader classLoader1 =
+                classLoaderService.getClassLoader(
+                        3L, Lists.newArrayList(new URL("file:///fake.jar")));
+        ClassLoader classLoader2 =
+                classLoaderService.getClassLoader(
+                        3L,
+                        Lists.newArrayList(
+                                new URL("file:///fake.jar"), new URL("file:///fake.jar")));
+        Assertions.assertSame(classLoader1, classLoader2);
+        Assertions.assertEquals(
+                2,
+                classLoaderService.queryClassLoaderReferenceCount(
+                        3L, Lists.newArrayList(new URL("file:///fake.jar"))));
+        classLoaderService.releaseClassLoader(
+                3L, Lists.newArrayList(new URL("file:///fake.jar"), new URL("file:///fake.jar")));
+        Assertions.assertEquals(
+                1,
+                classLoaderService.queryClassLoaderReferenceCount(
+                        3L, Lists.newArrayList(new URL("file:///fake.jar"))));
+    }
+
+    @Test
     void testErrorInvoke() throws MalformedURLException {
         classLoaderService.releaseClassLoader(
                 2L,
