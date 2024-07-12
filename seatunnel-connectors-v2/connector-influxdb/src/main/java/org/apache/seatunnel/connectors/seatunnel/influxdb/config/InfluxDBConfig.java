@@ -52,7 +52,7 @@ public class InfluxDBConfig implements Serializable {
             Options.key("connect_timeout_ms")
                     .longType()
                     .defaultValue(15000L)
-                    .withDescription("the influxdb client connect timeout ms");
+                    .withDescription("the influxdb fds client connect timeout ms");
 
     public static final Option<Integer> QUERY_TIMEOUT_SEC =
             Options.key("query_timeout_sec")

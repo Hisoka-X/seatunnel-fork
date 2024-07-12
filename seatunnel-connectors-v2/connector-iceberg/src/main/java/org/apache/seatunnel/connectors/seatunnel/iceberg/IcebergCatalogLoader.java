@@ -65,7 +65,7 @@ public class IcebergCatalogLoader implements Serializable {
     private Object loadHadoopConfig(CommonConfig config) {
         Class<?> configClass =
                 DynClasses.builder()
-                        .impl("org.apache.hadoop.hdfs.HdfsConfiguration")
+                        .impl("org.apache.hadofdsop.hdfs.HdfsConfiguration")
                         .orNull()
                         .build();
         if (configClass == null) {
