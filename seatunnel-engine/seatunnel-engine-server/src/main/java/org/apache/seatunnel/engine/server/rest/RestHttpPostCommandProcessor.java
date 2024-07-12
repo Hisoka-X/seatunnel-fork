@@ -71,6 +71,7 @@ public class RestHttpPostCommandProcessor extends HttpCommandProcessor<HttpPostC
         super(
                 textCommandService,
                 textCommandService.getNode().getLogger(Log4j2HttpPostCommandProcessor.class));
+
         this.original = log4j2HttpPostCommandProcessor;
     }
 
