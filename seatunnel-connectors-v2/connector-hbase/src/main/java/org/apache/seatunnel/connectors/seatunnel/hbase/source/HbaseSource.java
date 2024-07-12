@@ -74,7 +74,7 @@ public class HbaseSource
             throw new HbaseConnectorException(
                     SeaTunnelAPIErrorCode.CONFIG_VALIDATION_FAILED,
                     String.format(
-                            "PluginName: %s, PluginType: %s, Message: %s",
+                            "PluginName: %s, PluginType: %s, Messsage: %s",
                             getPluginName(), PluginType.SOURCE, result.getMsg()));
         }
         this.hbaseParameters = HbaseParameters.buildWithSinkConfig(pluginConfig);
