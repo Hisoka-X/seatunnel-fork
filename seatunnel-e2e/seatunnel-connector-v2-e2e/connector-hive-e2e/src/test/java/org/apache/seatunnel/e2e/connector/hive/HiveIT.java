@@ -158,8 +158,8 @@ public class HiveIT extends TestSuiteBase implements TestResource {
         hmsContainer.setPortBindings(Collections.singletonList("9083:9083"));
 
         Startables.deepStart(Stream.of(hmsContainer)).join();
-        log.info(hmsContainer.getLogs());
-        log.info("HMS just started");
+        log.error(hmsContainer.getLogs());
+        log.error("HMS just started");
 
         hiveServerContainer =
                 HiveContainer.hiveServer()
@@ -172,8 +172,8 @@ public class HiveIT extends TestSuiteBase implements TestResource {
         hiveServerContainer.setPortBindings(Collections.singletonList("10000:10000"));
 
         Startables.deepStart(Stream.of(hiveServerContainer)).join();
-        log.info(hiveServerContainer.getLogs());
-        log.info("HiveServer2 just started");
+        log.error(hiveServerContainer.getLogs());
+        log.error("HiveServer2 just started");
 
         given().ignoreExceptions()
                 .await()
