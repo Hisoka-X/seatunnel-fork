@@ -32,7 +32,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.TestTemplate;
 import org.testcontainers.containers.Container;
-import org.testcontainers.containers.wait.strategy.HostPortWaitStrategy;
 import org.testcontainers.lifecycle.Startables;
 
 import lombok.extern.slf4j.Slf4j;
@@ -151,15 +150,12 @@ public class HiveIT extends TestSuiteBase implements TestResource {
     @Override
     public void startUp() throws Exception {
         hmsContainer =
-                HiveContainer.hmsStandalone()
-                        .withNetwork(NETWORK)
-                        .withNetworkAliases(HMS_HOST)
-                        .waitingFor(new HostPortWaitStrategy());
+                HiveContainer.hmsStandalone().withNetwork(NETWORK).withNetworkAliases(HMS_HOST);
         hmsContainer.setPortBindings(Collections.singletonList("9083:9083"));
 
         Startables.deepStart(Stream.of(hmsContainer)).join();
-        log.error(hmsContainer.getLogs());
-        log.error("HMS just started");
+        log.info(hmsContainer.getLogs());
+        log.info("HMS just started");
 
         hiveServerContainer =
                 HiveContainer.hiveServer()
@@ -167,13 +163,12 @@ public class HiveIT extends TestSuiteBase implements TestResource {
                         .withNetworkAliases(HIVE_SERVER_HOST)
                         .withEnv("SERVICE_OPTS", "-Dhive.metastore.uris=thrift://hivee2e:9083")
                         .withEnv("IS_RESUME", "true")
-                        .waitingFor(new HostPortWaitStrategy())
                         .dependsOn(hmsContainer);
         hiveServerContainer.setPortBindings(Collections.singletonList("10000:10000"));
 
         Startables.deepStart(Stream.of(hiveServerContainer)).join();
-        log.error(hiveServerContainer.getLogs());
-        log.error("HiveServer2 just started");
+        log.info(hiveServerContainer.getLogs());
+        log.info("HiveServer2 just started");
 
         given().ignoreExceptions()
                 .await()

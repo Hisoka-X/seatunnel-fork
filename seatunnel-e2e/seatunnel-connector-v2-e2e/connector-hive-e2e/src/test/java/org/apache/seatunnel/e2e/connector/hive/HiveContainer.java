@@ -51,7 +51,7 @@ public class HiveContainer extends GenericContainer<HiveContainer> {
         super(DEFAULT_IMAGE_NAME.withTag(DEFAULT_TAG));
         this.addExposedPorts(role.exposePort);
         this.addEnv(SERVICE_NAME_ENV, role.serviceName);
-        this.setWaitStrategy(role.waitStrategy);
+        this.waitingFor(role.waitStrategy);
         this.withLogConsumer(
                 new Slf4jLogConsumer(
                         DockerLoggerFactory.getLogger(
